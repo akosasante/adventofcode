@@ -9,8 +9,12 @@ defmodule InputParser do
     |> String.split(sep)
   end
   
-  def stream_input_text(file_path) do
-    File.stream!(file_path)
+  def stream_input_text(file_path, split \\ nil) do
+    stream = File.stream!(file_path) |> Enum.map(&(String.trim/1))
+    case split do
+      nil -> stream
+      sep -> Enum.map(stream, &(String.split(&1, sep)))
+    end
   end
   
   def get_path_for_day(day) do
