@@ -3,9 +3,10 @@ defmodule InputParser do
     File.read!(file_path)
   end
   
-  def input_body_to_list(body) do
+  def input_body_to_list(body, sep \\ "\n") do
     body
-    |> String.split("\n")
+    |> String.trim
+    |> String.split(sep)
   end
   
   def stream_input_text(file_path) do
