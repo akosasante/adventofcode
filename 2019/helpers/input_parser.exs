@@ -3,17 +3,25 @@ defmodule InputParser do
     File.read!(file_path)
   end
   
-  def input_body_to_list(body, sep \\ "\n") do
-    body
+  def input_body_to_list(body, sep \\ "\n", as_int \\ false) do
+    body = body
     |> String.trim
     |> String.split(sep)
+    case as_int do
+      true -> Enum.map(body, &String.to_integer/1)
+      false -> body
+    end
   end
   
-  def stream_input_text(file_path, split \\ nil) do
-    stream = File.stream!(file_path) |> Enum.map(&(String.trim/1))
-    case split do
+  def stream_input_text(file_path, split \\ nil, as_int \\ false) do
+    stream = File.stream!(file_path) |> Stream.map(&String.trim/1)
+    stream = case split do
       nil -> stream
-      sep -> Enum.map(stream, &(String.split(&1, sep)))
+      sep -> Stream.flat_map(stream, &(String.split(&1, sep)))
+    end
+    case as_int do
+       true -> Stream.map(stream, &String.to_integer/1)
+       false -> stream
     end
   end
   
@@ -23,15 +31,14 @@ defmodule InputParser do
     |> Path.join("/day#{day}input.txt")
   end
   
-  def get_input_list_for_day(day) do
+  def get_input_list_for_day(day, sep \\ "\n", as_int \\ false) do
     get_path_for_day(day)
     |> read_input_text
-    |> input_body_to_list
+    |> input_body_to_list(sep, as_int)
   end
   
-  def get_input_stream_for_day(day) do
+  def get_input_stream_for_day(day, sep \\ nil, as_int \\ false) do
     get_path_for_day(day)
-    |> stream_input_text
-    |> Stream.map(&String.trim/1)
+    |> stream_input_text(sep, as_int)
   end
 end
