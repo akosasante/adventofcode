@@ -3,10 +3,12 @@ Code.require_file("timed.exs", "../helpers")
 defmodule Day3 do
   defmodule Part1 do
     def run_brute() do
-      InputParser.get_input_stream_for_day(3)
-      |> Enum.map(&(String.split(&1, ",")))
+      InputParser.get_input_list_for_day(3)
+      |> pre_do
       |> do_the_thing
+      |> after_do
     end
+    
     def do_the_thing([wire1, wire2]) do
       wire1steps = []
       wire2steps = []
@@ -20,8 +22,16 @@ defmodule Day3 do
       
       intersections = MapSet.intersection(MapSet.new(wire1steps), MapSet.new(wire2steps))
       IO.puts("Intersections: #{inspect intersections}")
-      
-      {min_x, min_y} = Enum.min_by(intersections, fn {x_val, y_val} = intersection -> 
+
+      {wire1steps, wire2steps, intersections}
+    end
+
+    defp pre_do(list) do
+      list
+      |> Enum.map(&(String.split(&1, ",")))
+    end
+    defp after_do({_, _, intersections}) do
+      {min_x, min_y} = Enum.min_by(intersections, fn {x_val, y_val} = intersection ->
         sum = abs(x_val) + abs(y_val)
         IO.puts("Intersection: #{inspect intersection}; Distance=#{sum}")
         sum
@@ -67,8 +77,31 @@ defmodule Day3 do
   end
   defmodule Part2 do
     def run_brute() do
+      InputParser.get_input_list_for_day(3)
+      |> pre_do
+      |> do_the_thing
+      |> after_do
     end
-    def do_the_thing do
+    
+    defp pre_do(list) do
+      list
+      |> Enum.map(&(String.split(&1, ",")))
+      |> Part1.do_the_thing
+    end
+    defp after_do(list_of_sums) do
+      IO.inspect(list_of_sums)
+      Enum.min(list_of_sums)
+    end
+    def do_the_thing({wire1_steps, wire2_steps, intersections}) do
+      IO.inspect(Enum.count(wire1_steps))
+      IO.inspect(Enum.count(wire2_steps))
+      Enum.map(intersections, fn intersection -> 
+        wire1_first = Enum.find_index(wire1_steps, fn step -> step == intersection  end)
+        wire2_first = Enum.find_index(wire2_steps, fn step -> step == intersection  end)
+        sum = wire1_first + wire2_first + 2
+        IO.puts("Intersection: #{inspect intersection}; #{wire1_first} + #{wire2_first} = #{sum}")
+        sum
+      end)
     end
   end
 end
