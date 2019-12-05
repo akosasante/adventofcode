@@ -6,41 +6,19 @@ defmodule Day2 do
       input_list
       |> Enum.with_index
       |> Map.new(fn {num, idx} -> {idx, num} end)
-      |> IO.inspect
       |> Map.put(1, 12)
       |> Map.put(2, 2)
     end
     def after_do(output_map) do
       output_map
-      |> IO.inspect
       |> Enum.sort
-      |> IO.inspect
       |> Enum.unzip
-      |> IO.inspect
       |> elem(1)
       |> hd
     end
     def do_the_thing(input_map) do
       IO.puts "Starting map: #{inspect input_map}"
       recursive_do_thing(input_map)
-#      new_map = input_map
-#      instruction_chunks = Enum.chunk_every(input_map, 4)
-#      try do
-#        for chunk <- instruction_chunks do
-#          x = case chunk do
-#            [{_, 1} | ops] -> add_operation(ops, input_map)
-#            [{_, 2} | ops] -> multiply_operation(ops, input_map)
-#            [{_, 99} | _] -> throw(:break)
-#            e -> raise "Unknown Operator: #{e}"
-#          end
-#          Map.merge(new_map, x) |> IO.inspect
-#        end
-#        new_map |> IO.inspect
-#      catch
-#        :break ->
-#          IO.puts("BREAKING LOOP")
-#          input_map
-#      end
     end
     
     def run_brute() do
