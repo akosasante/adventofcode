@@ -1,85 +1,52 @@
-defmodule Mix.Tasks.SetupAdventDay do
+defmodule Mix.Tasks.Advent.SetupDay do
   use Mix.Task
 
-  @shortdoc "Download the input and create starter file(s) for given advent challenge of the day"
+  @shortdoc "Create folder and starter file for given day's advent challenge"
 
-  @cache_dir ".advent_inputs_cache"
+  alias Helpers.Shared
 
-  def run([year, day, session]) do
-    Finch.start_link(name: MyFinch)
-    get_input(year, day, session)
+  def run([year, day]) do
+    IO.puts "Generating file(s) for Advent #{2020}, Day #{day}"
+    file_path = Path.join(get_day_folder(day), "code.ex")
+
+    File.write(
+      file_path,
+      skeleton_content(year, day)
+    )
   end
 
-  def run([day, session]) do
-    run([calculate_year(), day, session])
+  def run([day]) do
+    run([Shared.calculate_year(), day])
   end
 
-  def get_input(year, day, session) do
-    if in_cache?(year, day) do
-      get_file(year, day)
-    else
-      save_input_from_site(year, day, session)
-      get_file(year, day)
+  defp get_day_folder(day) do
+    path = "lib/day#{day}"
+    unless File.exists?(path) do
+      File.mkdir(path)
     end
+
+    path
   end
 
-  def save_file(content, year, day) do
-    unless @cache_dir |> File.exists? do
-      File.mkdir(@cache_dir)
-    end
-    write_out("input_#{year}_#{day}", content)
-    :ok
-  end
+  defp skeleton_content(year, day) do
+    """
+      defmodule Advent#{year}.Day#{day} do
+        def part1(input) do
+          IO.inspect(input)
+        end
 
-  defp write_out(file, content) do
-    Path.join(@cache_dir, file)
-    |> File.write(content, [])
-  end
+        def part1_stream(input_stream) do
+          IO.inspect(input_stream)
+        end
 
-  defp get_file(year, day) do
-    case get_filename(year,day) |> File.read() do
-      {:ok, contents} -> {:ok, contents}
-      {:error, _msg} -> {:fail, "No file found"}
-    end
-  end
+        def part2(input) do
+          IO.inspect(input)
+        end
 
-  defp in_cache?(year, day) do
-    get_filename(year, day)
-    |> File.exists?()
-  end
-
-  defp get_filename(year, day) do
-    Path.join(@cache_dir, "input_#{year}_#{day}")
-  end
-
-  defp save_input_from_site(year, day, session) do
-    get_body(year, day, session)
-    |> save_file(year, day)
-  end
-
-  defp get_body(year, day, session) do
-    {:ok, %Finch.Response{body: body, status: 200}} =
-      Finch.build(:get, generate_url(year, day), generate_headers(session))
-      |> Finch.request(MyFinch)
-
-    body
-  end
-
-  defp generate_url(year,day) do
-    "https://adventofcode.com/#{year}/day/#{day}/input"
-  end
-
-  defp generate_headers(session) do
-    [{"cookie", "session=#{session}"}]
-  end
-
-  defp calculate_year do
-    today = Date.utc_today
-    if today.month < 12 do
-      # It's before december so the newest advent calendar is not out yet, so use last year's by default
-      today.year-1
-    else
-      today.year
-    end
+        def part2_stream(input_stream) do
+          IO.inspect(input_stream)
+        end
+      end
+    """
   end
 end
