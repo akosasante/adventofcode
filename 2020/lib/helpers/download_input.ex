@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Advent.DownloadInput do
 
   @cache_dir ".advent_inputs_cache"
 
-  alias Helpers.Shared
+  import Helpers.Shared
 
   def run([year, day, session]) do
     Finch.start_link(name: MyFinch)
@@ -13,7 +13,7 @@ defmodule Mix.Tasks.Advent.DownloadInput do
   end
 
   def run([day, session]) do
-    run([Shared.calculate_year(), day, session])
+    run([calculate_year(), day, session])
   end
 
   def get_input(year, day, session) do
@@ -40,20 +40,9 @@ defmodule Mix.Tasks.Advent.DownloadInput do
     |> File.write(content, [])
   end
 
-  defp get_file(year, day) do
-    case get_filename(year,day) |> File.read() do
-      {:ok, contents} -> {:ok, contents}
-      {:error, _msg} -> {:fail, "No file found"}
-    end
-  end
-
   defp in_cache?(year, day) do
     get_filename(year, day)
     |> File.exists?()
-  end
-
-  defp get_filename(year, day) do
-    Path.join(@cache_dir, "input_#{year}_#{day}")
   end
 
   defp save_input_from_site(year, day, session) do

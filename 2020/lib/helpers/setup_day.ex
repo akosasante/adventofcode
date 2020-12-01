@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Advent.SetupDay do
 
   @shortdoc "Create folder and starter file for given day's advent challenge"
 
-  alias Helpers.Shared
+  import Helpers.Shared
 
   def run([year, day]) do
     IO.puts "Generating file(s) for Advent #{2020}, Day #{day}"
@@ -16,7 +16,7 @@ defmodule Mix.Tasks.Advent.SetupDay do
   end
 
   def run([day]) do
-    run([Shared.calculate_year(), day])
+    run([calculate_year(), day])
   end
 
   defp get_day_folder(day) do
@@ -31,20 +31,26 @@ defmodule Mix.Tasks.Advent.SetupDay do
   defp skeleton_content(year, day) do
     """
       defmodule Advent#{year}.Day#{day} do
+        import Helpers.Shared, only: [log: 1]
+
         def part1(input) do
-          IO.inspect(input)
+          log("Running #{year}-#{day}-P1-InputList")
+          "Not implemented"
         end
 
         def part1_stream(input_stream) do
-          IO.inspect(input_stream)
+          log("Running #{year}-#{day}-P1-InputStream")
+          "Not implemented"
         end
 
         def part2(input) do
-          IO.inspect(input)
+          log("Running #{year}-#{day}-P2-InputList")
+          "Not implemented"
         end
 
         def part2_stream(input_stream) do
-          IO.inspect(input_stream)
+          log("Running #{year}-#{day}-P2-InputStream")
+          "Not implemented"
         end
       end
     """

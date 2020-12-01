@@ -7,7 +7,8 @@ defmodule Advent2020.MixProject do
       version: "0.1.0",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      consolidate_protocols: true
     ]
   end
 
@@ -21,7 +22,8 @@ defmodule Advent2020.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:finch, "~> 0.5"}
+      {:finch, "~> 0.5"},
+      {:benchee, "~> 1.0"}
     ]
   end
 end
