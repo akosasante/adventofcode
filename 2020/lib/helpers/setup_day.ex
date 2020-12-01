@@ -38,6 +38,11 @@ defmodule Mix.Tasks.Advent.SetupDay do
           "Not implemented"
         end
 
+        def part1_optimized(input) do
+          log("Running #{year}-#{day}-P1-InputListOptimized")
+          "Not implemented"
+        end
+
         def part1_stream(input_stream) do
           log("Running #{year}-#{day}-P1-InputStream")
           "Not implemented"
@@ -45,6 +50,11 @@ defmodule Mix.Tasks.Advent.SetupDay do
 
         def part2(input) do
           log("Running #{year}-#{day}-P2-InputList")
+          "Not implemented"
+        end
+
+        def part2_optimized(input) do
+          log("Running #{year}-#{day}-P2-InputListOptmized")
           "Not implemented"
         end
 
