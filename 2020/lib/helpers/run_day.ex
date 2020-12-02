@@ -24,20 +24,20 @@ defmodule Mix.Tasks.Advent.RunDay do
       Benchee.run(%{
         "Part 1" => fn -> apply(module_name, :part1, [input]) end,
         "Part 1 Optimized" => fn -> apply(module_name, :part1_optimized, [input]) end,
-#        "Part 1 Stream" => fn -> apply(module_name, :part1_stream, [input_stream]) end,
+        "Part 1 Stream" => fn -> apply(module_name, :part1_stream, [input_stream]) end,
         "Part 2" => fn -> apply(module_name, :part2, [input]) end,
-        "Part 2 Optimized" => fn -> apply(module_name, :part2_optimized, [input]) end
-#        "Part 2 Stream" => fn -> apply(module_name, :part2_stream, [input_stream]) end
+        "Part 2 Optimized" => fn -> apply(module_name, :part2_optimized, [input]) end,
+        "Part 2 Stream" => fn -> apply(module_name, :part2_stream, [input_stream]) end
       }, print: %{benchmarking: false, configuration: false})
     else
       System.put_env("PRINT_LOGS", "true")
 
       p1_answer = apply(module_name, :part1, [input])
       p1o_answer = apply(module_name, :part1_optimized, [input])
-#      p1s_answer = apply(module_name, :part1_stream, [input_stream])
+      p1s_answer = apply(module_name, :part1_stream, [input_stream])
       p2_answer = apply(module_name, :part2, [input])
       p2o_answer = apply(module_name, :part2_optimized, [input])
-#      p2s_answer = apply(module_name, :part2_stream, [input_stream])
+      p2s_answer = apply(module_name, :part2_stream, [input_stream])
 
       IO.puts(
         """
@@ -51,11 +51,17 @@ defmodule Mix.Tasks.Advent.RunDay do
         Part 1 Optimized:
         #{p1o_answer}
 
+        Part 1 Stream:
+        #{p1s_answer}
+
         Part 2:
         #{p2_answer}
 
         Part 2 Optimized:
         #{p2o_answer}
+
+        Part 2 Stream:
+        #{p2s_answer}
         ----------------------------
         """
       )
