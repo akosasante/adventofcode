@@ -54,7 +54,7 @@ defmodule Mix.Tasks.Advent.SetupDay do
         end
 
         def part2_optimized(input) do
-          log("Running #{year}-#{day}-P2-InputListOptmized")
+          log("Running #{year}-#{day}-P2-InputListOptimized")
           "Not implemented"
         end
 
