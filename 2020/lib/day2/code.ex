@@ -25,7 +25,8 @@ defmodule Advent2020.Day2 do
 
   def part1_stream(input_stream) do
     log("Running 2020-2-P1-InputStream")
-    "Not implemented"
+    Task.async_stream(input_stream, &check_password_line/1)
+    |> Enum.count(fn {:ok, res} -> res end)
   end
 
   def part2(input) do
@@ -42,12 +43,28 @@ defmodule Advent2020.Day2 do
 
   def part2_optimized(input) do
     log("Running 2020-2-P2-InputListOptimized")
-    "Not implemented"
+    Task.async_stream(input, fn string ->
+      {password, rule} = format_password_line(string)
+      password = String.graphemes(password)
+      char1 = if Enum.at(password, rule(rule, :min) - 1) == rule(rule, :character), do: 1, else: 0
+      char2 = if Enum.at(password, rule(rule, :max) - 1) == rule(rule, :character), do: 1, else: 0
+
+      {char1, char2}
+    end)
+    |> Enum.count(fn {:ok, {char1, char2}} -> Bitwise.bxor(char1, char2) == 1 end)
   end
 
   def part2_stream(input_stream) do
     log("Running 2020-2-P2-InputStream")
-    "Not implemented"
+    Task.async_stream(input_stream, fn string ->
+      {password, rule} = format_password_line(string)
+      password = String.graphemes(password)
+      char1 = if Enum.at(password, rule(rule, :min) - 1) == rule(rule, :character), do: 1, else: 0
+      char2 = if Enum.at(password, rule(rule, :max) - 1) == rule(rule, :character), do: 1, else: 0
+
+      {char1, char2}
+    end)
+    |> Enum.count(fn {:ok, {char1, char2}} -> Bitwise.bxor(char1, char2) == 1 end)
   end
 
 
