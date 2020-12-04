@@ -23,7 +23,8 @@ defmodule Advent2020.MixProject do
   defp deps do
     [
       {:finch, "~> 0.5"},
-      {:benchee, "~> 1.0"}
+      {:benchee, "~> 1.0"},
+      {:ecto_sql, "~> 3.0"}
     ]
   end
 end
