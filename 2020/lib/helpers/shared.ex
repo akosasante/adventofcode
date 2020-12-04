@@ -22,14 +22,14 @@ defmodule Helpers.Shared do
     Path.join(@cache_dir, "input_#{year}_#{day}")
   end
 
-  def get_input_list_for_day(year, day) do
+  def get_input_list_for_day(year, day, sep \\ "\n") do
     File.read!(get_filename(year,day))
-    |> String.split("\n", trim: true)
+    |> String.split(sep, trim: true)
   end
 
-  def get_input_stream_for_day(year, day) do
+  def get_input_stream_for_day(year, day, sep \\ "\n") do
     File.stream!(get_filename(year,day))
-    |> Stream.flat_map(&(String.split(&1, "\n", trim: true)))
+    |> Stream.flat_map(&(String.split(&1, sep, trim: true)))
   end
 
   def log(message) do

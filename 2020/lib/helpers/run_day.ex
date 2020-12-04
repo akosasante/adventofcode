@@ -9,14 +9,15 @@ defmodule Mix.Tasks.Advent.RunDay do
     year = get_year(args)
     day = get_day(args)
     bench = get_benchmark_flag(args)
+    sep = get_separator(args)
 
-    run_day(year, day, bench)
+    run_day(year, day, bench, sep)
   end
 
-  defp run_day(year, day, bench) do
+  defp run_day(year, day, bench, sep) do
     module_name = Module.concat("Advent#{year}", "Day#{day}")
-    input = get_input_list_for_day(year, day)
-    input_stream = get_input_stream_for_day(year, day)
+    input = get_input_list_for_day(year, day, sep)
+    input_stream = get_input_stream_for_day(year, day, sep)
 
     if bench do
       System.put_env("PRINT_LOGS", "false")
@@ -87,6 +88,13 @@ defmodule Mix.Tasks.Advent.RunDay do
       "bench=" <> bench when bench in ["false", "true"] -> String.to_atom(bench)
       nil -> false
       _ -> raise "If included, bench= argument can only have the values of `true` or `false`"
+    end
+  end
+
+  defp get_separator(args) do
+    case Enum.find(args, &(String.starts_with?(&1, "sep="))) do
+      "sep=" <> sep -> sep
+      _ -> "\n"
     end
   end
 end
