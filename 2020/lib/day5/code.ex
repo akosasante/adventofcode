@@ -96,7 +96,7 @@ defmodule Advent2020.Day5 do
   end
 
   defp expected_sum_of_list(list_of_seat_ids) do
-    # Using the formulat to find sum of consecutive numbers (Gauss?)
+    # Using the formulat to find sum of consecutive numbers (idr what it's called; Gauss?)
     first_val = List.first(list_of_seat_ids)
     last_val = List.last(list_of_seat_ids)
     ((first_val + last_val) / 2)
