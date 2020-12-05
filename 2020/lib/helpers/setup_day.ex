@@ -6,7 +6,7 @@ defmodule Mix.Tasks.Advent.SetupDay do
   import Helpers.Shared
 
   def run([year, day]) do
-    IO.puts "Generating file(s) for Advent #{2020}, Day #{day}"
+    IO.puts("Generating file(s) for Advent #{2020}, Day #{day}")
     file_path = Path.join(get_day_folder(day), "code.ex")
 
     File.write(
@@ -21,6 +21,7 @@ defmodule Mix.Tasks.Advent.SetupDay do
 
   defp get_day_folder(day) do
     path = "lib/day#{day}"
+
     unless File.exists?(path) do
       File.mkdir(path)
     end

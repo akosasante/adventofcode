@@ -25,12 +25,14 @@ defmodule Advent2020.Day2 do
 
   def part1_stream(input_stream) do
     log("Running 2020-2-P1-InputStream")
+
     Task.async_stream(input_stream, &check_password_line/1)
     |> Enum.count(fn {:ok, res} -> res end)
   end
 
   def part2(input) do
     log("Running 2020-2-P2-InputList")
+
     Enum.count(input, fn string ->
       {password, rule} = format_password_line(string)
       password = String.graphemes(password)
@@ -43,6 +45,7 @@ defmodule Advent2020.Day2 do
 
   def part2_optimized(input) do
     log("Running 2020-2-P2-InputListOptimized")
+
     Task.async_stream(input, fn string ->
       {password, rule} = format_password_line(string)
       password = String.graphemes(password)
@@ -56,6 +59,7 @@ defmodule Advent2020.Day2 do
 
   def part2_stream(input_stream) do
     log("Running 2020-2-P2-InputStream")
+
     Task.async_stream(input_stream, fn string ->
       {password, rule} = format_password_line(string)
       password = String.graphemes(password)
@@ -67,22 +71,27 @@ defmodule Advent2020.Day2 do
     |> Enum.count(fn {:ok, {char1, char2}} -> Bitwise.bxor(char1, char2) == 1 end)
   end
 
-
-
   defp check_password_line(string, use_struct? \\ false) do
     format_password_line(string, use_struct?)
     |> password_character_count()
     |> is_password_valid?()
   end
 
-  #eg: 13-15 c: cqbhncccjsncqcc
+  # eg: 13-15 c: cqbhncccjsncqcc
   def format_password_line(string, use_struct? \\ false) do
     %{"character" => char, "max" => max, "min" => min, "password" => pass} =
-      Regex.named_captures( ~r/^(?<min>\d+)-(?<max>\d+) (?<character>\w): (?<password>\w+)$/, string)
+      Regex.named_captures(
+        ~r/^(?<min>\d+)-(?<max>\d+) (?<character>\w): (?<password>\w+)$/,
+        string
+      )
 
     rule =
       if use_struct? do
-        %PasswordRuleStruct{max: String.to_integer(max), min: String.to_integer(min), character: char}
+        %PasswordRuleStruct{
+          max: String.to_integer(max),
+          min: String.to_integer(min),
+          character: char
+        }
       else
         rule(max: String.to_integer(max), min: String.to_integer(min), character: char)
       end

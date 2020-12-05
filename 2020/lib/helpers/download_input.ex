@@ -18,19 +18,20 @@ defmodule Mix.Tasks.Advent.DownloadInput do
 
   def get_input(year, day, session) do
     if in_cache?(year, day) do
-      IO.puts "Grabbing day##{day}_#{year} from cache"
+      IO.puts("Grabbing day##{day}_#{year} from cache")
       get_file(year, day)
     else
-      IO.puts "Grabbing day##{day}_#{year} from site"
+      IO.puts("Grabbing day##{day}_#{year} from site")
       save_input_from_site(year, day, session)
       get_file(year, day)
     end
   end
 
   def save_file(content, year, day) do
-    unless @cache_dir |> File.exists? do
+    unless @cache_dir |> File.exists?() do
       File.mkdir(@cache_dir)
     end
+
     write_out("input_#{year}_#{day}", content)
     :ok
   end
@@ -58,7 +59,7 @@ defmodule Mix.Tasks.Advent.DownloadInput do
     body
   end
 
-  defp generate_url(year,day) do
+  defp generate_url(year, day) do
     "https://adventofcode.com/#{year}/day/#{day}/input"
   end
 
