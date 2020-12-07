@@ -22,8 +22,10 @@ defmodule Advent2020.Day5 do
 
   def part2(input) do
     log("Running 2020-5-P2-InputList")
-    list_of_seat_ids = Enum.map(input, &parse_seat_ids/1)
-    |> Enum.sort()
+
+    list_of_seat_ids =
+      Enum.map(input, &parse_seat_ids/1)
+      |> Enum.sort()
 
     expected_sum = expected_sum_of_list(list_of_seat_ids)
     actual_sum = Enum.sum(list_of_seat_ids)
@@ -99,8 +101,10 @@ defmodule Advent2020.Day5 do
     # Using the formulat to find sum of consecutive numbers (idr what it's called; Gauss?)
     first_val = List.first(list_of_seat_ids)
     last_val = List.last(list_of_seat_ids)
+
     ((first_val + last_val) / 2)
-    |> Kernel.*(length(list_of_seat_ids) + 1) #plus one because our list is missing one boarding pass!
+    # plus one because our list is missing one boarding pass!
+    |> Kernel.*(length(list_of_seat_ids) + 1)
     |> floor()
   end
 end

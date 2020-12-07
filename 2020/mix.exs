@@ -24,7 +24,8 @@ defmodule Advent2020.MixProject do
     [
       {:finch, "~> 0.5"},
       {:benchee, "~> 1.0"},
-      {:ecto_sql, "~> 3.0"}
+      {:ecto_sql, "~> 3.0"},
+      {:libgraph, "~> 0.7"}
     ]
   end
 end
