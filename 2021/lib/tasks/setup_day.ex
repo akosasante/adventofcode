@@ -6,7 +6,7 @@ defmodule Mix.Tasks.Advent.SetupDay do
   import Helpers.Shared
 
   def run([year, day]) do
-    Mix.Tasks.Advent.DownloadInput.run([year, day])
+    get_input(year, day)
 
     IO.puts("Generating file(s) for Advent #{year}, Day #{day}")
     file_path = Path.join(get_day_folder(day), "code.ex")

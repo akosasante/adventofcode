@@ -12,6 +12,11 @@ defmodule Helpers.Shared do
     end
   end
 
+  def get_input(year, day) do
+    IO.puts "Downloading input for #{year}/#{day}"
+    AdventOfCodeHelper.get_input(year, day)
+  end
+
   def get_file(year, day) do
     case get_filename(year, day) |> File.read() do
       {:ok, contents} -> {:ok, contents}
