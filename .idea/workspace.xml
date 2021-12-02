@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51bb2787-a8ce-4515-8147-5b2e301823c5" name="Default Changelist" comment="2021 day 1">
+    <list default="true" id="51bb2787-a8ce-4515-8147-5b2e301823c5" name="Default Changelist" comment="update tasks to simplify getting input">
       <change afterPath="$PROJECT_DIR$/2021/.advent_inputs_cache/input_2021_2" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/2021/lib/day2/code.ex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2021/lib/tasks/download_input.ex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2021/lib/tasks/setup_day.ex" beforeDir="false" afterPath="$PROJECT_DIR$/2021/lib/tasks/setup_day.ex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2021/lib/tasks/shared.ex" beforeDir="false" afterPath="$PROJECT_DIR$/2021/lib/tasks/helpers/shared.ex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +83,7 @@
       <updated>1607240041446</updated>
       <workItem from="1638366935339" duration="8571000" />
       <workItem from="1638456571456" duration="1762000" />
-      <workItem from="1638460394284" duration="312000" />
+      <workItem from="1638460394284" duration="1211000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1607240442480</created>
@@ -123,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638456648403</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update tasks to simplify getting input">
+      <created>1638460749220</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1638460749221</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +151,7 @@
     <MESSAGE value="setup for new year with adent of code helper" />
     <MESSAGE value="clean up old years" />
     <MESSAGE value="2021 day 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021 day 1" />
+    <MESSAGE value="update tasks to simplify getting input" />
+    <option name="LAST_COMMIT_MESSAGE" value="update tasks to simplify getting input" />
   </component>
 </project>
