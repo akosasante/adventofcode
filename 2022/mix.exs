@@ -21,8 +21,7 @@ defmodule Advent2022.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:benchee, "~> 1.1.0"},
-      {:advent_of_code_helper, "~> 0.2.1"}
+      {:advent_of_code_helper, "~> 0.3.1"}
     ]
   end
 end
