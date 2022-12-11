@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51bb2787-a8ce-4515-8147-5b2e301823c5" name="Default Changelist" comment="update tasks to simplify getting input">
-      <change afterPath="$PROJECT_DIR$/2021/.advent_inputs_cache/input_2021_2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2021/lib/day2/code.ex" afterDir="false" />
+    <list default="true" id="51bb2787-a8ce-4515-8147-5b2e301823c5" name="Default Changelist" comment="commit days 1 - 5 of 2022">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2022/mix.exs" beforeDir="false" afterPath="$PROJECT_DIR$/2022/mix.exs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2022/mix.lock" beforeDir="false" afterPath="$PROJECT_DIR$/2022/mix.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1lH39eqjS0y6cCQxQemadP8hGnC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -84,6 +87,11 @@
       <workItem from="1638366935339" duration="8571000" />
       <workItem from="1638456571456" duration="1762000" />
       <workItem from="1638460394284" duration="1211000" />
+      <workItem from="1669916062034" duration="15604000" />
+      <workItem from="1670125598343" duration="50000" />
+      <workItem from="1670130265538" duration="7902000" />
+      <workItem from="1670263865611" duration="35000" />
+      <workItem from="1670559426719" duration="14135000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1607240442480</created>
@@ -127,7 +135,21 @@
       <option name="project" value="LOCAL" />
       <updated>1638460749221</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="start 2022 folder">
+      <created>1669917184150</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669917184150</updated>
+    </task>
+    <task id="LOCAL-00008" summary="commit days 1 - 5 of 2022">
+      <created>1670263894377</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670263894377</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +165,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
@@ -152,6 +173,8 @@
     <MESSAGE value="clean up old years" />
     <MESSAGE value="2021 day 1" />
     <MESSAGE value="update tasks to simplify getting input" />
-    <option name="LAST_COMMIT_MESSAGE" value="update tasks to simplify getting input" />
+    <MESSAGE value="start 2022 folder" />
+    <MESSAGE value="commit days 1 - 5 of 2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit days 1 - 5 of 2022" />
   </component>
 </project>
