@@ -32,9 +32,10 @@ defmodule Advent2024.Day1 do
     Logger.info("Running 2024-1-P2-InputList")
     {left_list, right_list} = build_lists_from_input(input)
     right_list_frequency_map = Enum.frequencies(right_list)
+
     Enum.reduce(left_list, 0, fn left, acc ->
       similarity_score = Map.get(right_list_frequency_map, left, 0)
-      acc + (left * similarity_score)
+      acc + left * similarity_score
     end)
   end
 end
