@@ -1,0 +1,4 @@
+.DS_Store
+temp_*.dot
+temp_*.pdf
+.advent_inputs_cache/
